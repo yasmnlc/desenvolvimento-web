@@ -1,0 +1,93 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  background-color: #27be61;
+  padding: 20px;
+  margin: 0;
+  font-size: 2.5em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+  color: #133b5c;
+  text-align: center;
+  margin-top: 40px;
+}
+
+p {
+  color: #001f4d;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+pre {
+  color: #00185a;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 10px;
+  background-color: #eef3f9;
+  font-size: 16px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+table {
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 800px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #000000;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #27be61;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #135b35;
+}
+
+a {
+  color: #1e88e5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
