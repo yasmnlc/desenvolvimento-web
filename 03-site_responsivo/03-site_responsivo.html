@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Corinthians - Site Responsivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/874.png" type="image/png">
+</head>
+<body>
+
+  <!-- Cabeçalho principal do site -->
+  <header>
+    <h1>Sport Club Corinthians Paulista</h1>
+    <p>O Time do Povo • Desde 1910</p>
+  </header>
+
+  <!-- Barra de navegação principal, sticky por CSS -->
+  <nav>
+    <div class="nav-container">
+      <!-- Logotipo do site -->
+      <span class="logo">Corinthians</span>
+
+      <!-- Botões de modo escuro e menu mobile -->
+      <div style="display: flex; align-items: center; gap: 1rem;">
+
+        <!-- Ícone do menu hambúrguer para mobile -->
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu de navegação">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Links de navegação -->
+      <div class="nav-links" id="navLinks">
+        <a href="#historia">História</a>
+        <a href="#titulos">Títulos</a>
+        <a href="#elenco">Elenco</a>
+        <a href="#contato">Contato</a>
+        <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <!-- Artigo com conteúdo principal -->
+    <article>
+      <!-- Seção da história do clube -->
+      <section id="historia">
+        <h2>História</h2>
+        <figure class="image-container">
+          <img src="https://cdn.meutimao.com.br/_upload/historia/fatos-marcantes/a_historia_dos_escudos_corinthianos.jpg" alt="História do Corinthians">
+        </figure>
+        <p>Fundado em 1º de setembro de 1910, o Sport Club Corinthians Paulista é um dos clubes mais tradicionais e populares do futebol brasileiro. Surgiu na zona leste da cidade de São Paulo, fundado por um grupo de operários inspirados pelo time inglês Corinthian FC.</p>
+        <p>Ao longo de sua história, o Corinthians se consolidou como um clube de massas, com uma torcida apaixonada e vibrante, conhecida como a "Fiel Torcida". O clube é reconhecido não só pela sua força dentro de campo, mas também pelo seu papel social e cultural, representando a luta das classes trabalhadoras.</p>
+        <p>O Timão participou de inúmeros momentos marcantes do futebol nacional e internacional, construindo uma história repleta de glórias, superações e grandes ídolos que marcaram gerações. O estádio do clube, a Arena Corinthians, inaugurado em 2014, é um dos mais modernos do Brasil</p>
+      </section>
+
+      <!-- Seção de títulos -->
+      <section id="titulos">
+        <h2>Títulos Importantes</h2>
+        <figure class="image-container">
+          <img src="https://lncimg.lance.com.br/cdn-cgi/image/width=950,quality=75,fit=pad,format=webp/uploads/2025/03/corinthians_campeao-scaled-aspect-ratio-512-320-1.jpg" alt="Títulos do Corinthians">
+        </figure>
+        <p>O Corinthians é um dos clubes mais vitoriosos do futebol brasileiro, com conquistas expressivas em diferentes competições. Dentre os principais títulos, destacam-se:</p>
+          <ul>
+            <li><strong>Campeonato Brasileiro:</strong> 7 vezes campeão (1990, 1998, 1999, 2005, 2011, 2015 e 2017)</li>
+            <li><strong>Copa do Brasil:</strong> 3 vezes campeão (1995, 2002 e 2009)</li>
+            <li><strong>Copa Libertadores da América:</strong> Campeão em 2012, conquistando o título pela primeira vez na história do clube</li>
+            <li><strong>Mundial de Clubes da FIFA:</strong> Campeão em 2000 e 2012, com a histórica vitória contra o Chelsea</li>
+            <li><strong>Campeonato Paulista:</strong> 30 títulos, sendo o maior campeão do torneio estadual</li>
+          </ul>
+          <p>Essas conquistas consolidam o Corinthians como uma das maiores forças do futebol sul-americano, com uma trajetória marcada por grandes momentos e muita paixão.</p>
+      </section>
+
+      <!-- Seção do elenco atual -->
+      <section id="elenco">
+        <h2>Elenco Atual (2025)</h2>
+        <figure class="image-container">
+          <img src="https://www.meutimao.com.br/fotos-do-corinthians/w941/2025/03/27/elenco_do_corinthians_antes_da_final_diante_do_yx16.jpg" alt="Elenco do Corinthians">
+        </figure>
+        <p>O Sport Club Corinthians Paulista passa por uma fase de reconstrução em 2025, sob o comando do técnico <strong>Dorival Júnior</strong>, que assumiu o time com contrato até dezembro de 2026. O elenco combina jogadores experientes com jovens promessas, visando fortalecer a equipe nas competições nacionais e internacionais.</p>
+
+        <h3>Goleiros</h3>
+        <p>Com a saída de Cássio, a posição de goleiro é ocupada por <strong>Hugo Souza</strong>, de 26 anos, contratado junto ao Flamengo. Ele disputa a titularidade com <strong>Matheus Donelli</strong>, de 23 anos, e <strong>Felipe Longo</strong>, jovem promessa da base.</p>
+
+        <h3>Defensores</h3>
+        <p>A zaga conta com o equatoriano <strong>Félix Torres</strong>, de 28 anos, e os brasileiros <strong>André Ramalho</strong>, de 33 anos, e <strong>Cacá</strong>, de 26 anos. Nas laterais, o time conta com <strong>Diego Palacios</strong>, de 25 anos, e <strong>Matheus Bidu</strong>, de 26 anos.</p>
+
+        <h3>Meio-campistas</h3>
+        <p>O meio-campo é liderado por <strong>Maycon</strong>, que retornou ao clube por empréstimo, e conta com reforços como o argentino <strong>Rodrigo Garro</strong>, camisa 10, e o venezuelano <strong>José Andrés Martínez</strong>, de 30 anos. Outros nomes importantes incluem <strong>Raniele</strong>, <strong>Alex Santana</strong> e o peruano <strong>André Carrillo</strong>, que vem se destacando nas competições.
+        </p>
+
+        <h3>Atacantes</h3>
+        <p>No ataque, <strong>Yuri Alberto</strong> continua como principal referência ofensiva. O elenco também conta com o paraguaio <strong>Ángel Romero</strong>, o brasileiro <strong>Talles Magno</strong>, e o espanhol <strong>Héctor Hernández</strong>, que reforçam o setor ofensivo.</p>
+
+        <p>Com essa combinação de experiência e juventude, o Corinthians busca retomar o protagonismo no cenário do futebol brasileiro e sul-americano<p>
+      </section>
+    </article>
+
+    <!-- Barra lateral com curiosidades -->
+    <aside>
+      <h3>Curiosidades</h3>
+      <ul>
+        <li>O mascote oficial do clube é o Mosqueteiro, símbolo de bravura e lealdade à Fiel Torcida.</li>
+        <li>Possui uma das maiores torcidas do Brasil, sendo a maior do estado de São Paulo.</li>
+        <li>O estádio do clube é a Neo Química Arena, localizado em Itaquera, zona leste da capital paulista.</li>
+        <li>Ídolos históricos como Sócrates, Rivelino, Marcelinho Carioca e Neto marcaram gerações de torcedores.</li>
+        <li>Foi o primeiro campeão mundial reconhecido pela FIFA no formato atual, em 2000, vencendo o Vasco na final.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- Rodapé do site com contato -->
+  <footer id="contato">
+    <p>© 2025 Corinthians Oficial | contato@corinthians.com.br</p>
+  </footer>
+
+  <!-- Scripts para modo escuro e menu mobile -->
+  <script>
+    // Mostra ou oculta o menu em telas pequenas
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+
+    // Ativa ou desativa o modo escuro
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+
+</body>
+</html>

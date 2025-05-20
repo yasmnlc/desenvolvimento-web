@@ -1,0 +1,201 @@
+/* Variáveis de tema padrão (modo claro) */
+:root {
+  --bg-color: #f9f9f9;         /* Cor de fundo geral */
+  --text-color: #000;          /* Cor do texto principal */
+  --header-bg: #000;           /* Cor de fundo do cabeçalho */
+  --nav-bg: #111;              /* Cor de fundo da navegação */
+  --link-color: white;         /* Cor dos links */
+  --section-bg: #eee;          /* Cor de fundo das seções secundárias */
+  --footer-bg: #222;           /* Cor de fundo do rodapé */
+}
+
+/* Sobrescreve as variáveis para o modo escuro */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --header-bg: #111;
+  --nav-bg: #222;
+  --link-color: #fff;
+  --section-bg: #1e1e1e;
+  --footer-bg: #000;
+}
+
+/* Reset de estilo padrão para todos os elementos */
+* {
+  box-sizing: border-box;     /* Inclui padding e border no cálculo da largura */
+  margin: 0;                  /* Remove margens padrão */
+  padding: 0;                 /* Remove preenchimentos padrão */
+}
+
+/* Estilos gerais do corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Estilo do cabeçalho */
+header {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Estilo da barra de navegação */
+nav {
+  background-color: var(--nav-bg);
+  position: sticky;           /* Fixa o nav no topo ao rolar */
+  top: 0;
+  z-index: 1000;              /* Mantém o nav acima de outros elementos */
+}
+
+/* Container para o conteúdo do nav */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+/* Estilo do logo */
+.logo {
+  color: var(--link-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Estilo dos links da navegação */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Estilo dos links individuais */
+.nav-links a {
+  color: var(--link-color);
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+/* Efeito hover nos links */
+.nav-links a:hover {
+  background-color: #444;
+}
+
+/* Ícone do menu hamburguer (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Barras do menu hamburguer */
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+}
+
+/* Botão de alternância do modo escuro */
+.dark-toggle {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+/* Estilos responsivos para telas menores que 768px */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;               /* Oculta os links por padrão */
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+  }
+
+  .nav-links.show {
+    display: flex;               /* Mostra os links quando ativado */
+  }
+
+  .hamburger {
+    display: flex;               /* Mostra o ícone do menu */
+  }
+}
+
+/* Conteúdo principal da página */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+/* Estilo dos artigos (conteúdo principal) */
+article {
+  flex: 1 1 60%;
+  padding: 1rem;
+}
+
+/* Estilo da barra lateral */
+aside {
+  flex: 1 1 30%;
+  background-color: var(--section-bg);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Título dentro do aside */
+aside h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Lista dentro do aside */
+aside ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+/* Itens da lista */
+aside li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Estilo das seções */
+section {
+  margin-bottom: 2rem;
+}
+
+/* Estilo do rodapé */
+footer {
+  background-color: var(--footer-bg);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+/* Container de imagens */
+.image-container {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Estilo das imagens */
+.image-container img {
+  max-width: 100%;              /* Garante que a imagem não ultrapasse o container */
+  height: auto;                 /* Mantém a proporção da imagem */
+  border-radius: 10px;          /* Cantos arredondados */
+}
