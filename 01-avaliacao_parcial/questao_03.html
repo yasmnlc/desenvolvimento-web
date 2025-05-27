@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Questão 3</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
+    }
+
+    #pokemonImage {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img
+      id="pokemonImage"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+      alt="Pokémon"
+    />
+
+    <div class="buttons">
+      <button onclick="mudarPokemon(-1)">Voltar -1</button>
+      <button onclick="mudarPokemon(1)">Adiantar +1</button>
+    </div>
+  </div>
+
+  <script>
+    let numero = 1;
+
+    function mudarPokemon(delta) {
+      numero += delta;
+      if (numero < 1) numero = 1;
+      if (numero > 100) numero = 100;
+
+      const img = document.getElementById("pokemonImage");
+      img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${numero}.svg`;
+    }
+  </script>
+</body>
+</html>

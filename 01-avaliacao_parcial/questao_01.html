@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desenvolvimento de Software WEB</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      display: flex;
+      min-height: 80vh;
+      flex-wrap: wrap;
+    }
+
+    aside {
+      flex: 0 0 30%;
+      background-color: #666;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      margin-bottom: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      background-color: #555;
+    }
+
+    nav a:hover {
+      background-color: #777;
+    }
+
+    main {
+      flex: 0 0 70%;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    article p {
+      margin-bottom: 15px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin: 15px 0;
+      display: block;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      background-color: #ccc;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        flex-direction: column;
+      }
+
+      aside {
+        order: -1;
+        flex: none;
+      }
+
+      main {
+        flex: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Desenvolvimento de Software WEB</h1>
+  </header>
+
+  <div class="container">
+    <aside>
+      <nav>
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <article>
+        <h2>Introdução ao HTML</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <img src="https://updeveloper.com.br/wp-content/uploads/2024/09/curso-curso-de-html-basico-371.png" alt="HTML Básico" />
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, voluptas provident eius, laboriosam aperiam similique error perferendis vero ipsum a excepturi! Sunt expedita excepturi magni non commodi ad aperiam fuga?</p>
+        <img src="https://updeveloper.com.br/wp-content/uploads/2024/09/curso-curso-de-html-basico-371.png" alt="HTML Básico" />
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet adipisci deserunt animi consequuntur expedita laboriosam iste molestias ex, molestiae dolore. Illo ratione quidem minima officiis maxime quisquam fuga iste maiores.</p>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <p><a href="mailto:fulanodetal@ufc.br">fulanodetal@ufc.br</a></p>
+    <p>2025.1</p>
+    <p>Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
