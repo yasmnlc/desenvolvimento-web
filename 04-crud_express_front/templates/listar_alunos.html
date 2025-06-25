@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>CRUD Alunos</title>
+    <style>
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        form {
+            max-width: 450px;
+            background: #fff;
+            padding: 20px 25px;
+            margin: 0 auto 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        form h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #34495e;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #2980b9;
+            outline: none;
+            box-shadow: 0 0 5px #2980b9;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #1c5980;
+        }
+
+        button:disabled {
+            background-color: #7f8c8d;
+            cursor: not-allowed;
+        }
+
+        table {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover {
+            background-color: #f0f8ff;
+        }
+
+        /* Botões da tabela */
+        td button {
+            background-color: #27ae60;
+            margin: 0 5px;
+            padding: 7px 14px;
+            font-size: 14px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        td button:hover {
+            background-color: #1e8449;
+        }
+
+        td button.delete-btn {
+            background-color: #c0392b;
+        }
+
+        td button.delete-btn:hover {
+            background-color: #922b21;
+        }
+
+        /* Formulário editar */
+        #editarAlunoDiv {
+            max-width: 450px;
+            background: #fff;
+            padding: 20px 25px;
+            margin: 0 auto 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        #editarAlunoDiv h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #34495e;
+            text-align: center;
+        }
+
+        #btnCancelar {
+            background-color: #7f8c8d;
+        }
+
+        #btnCancelar:hover {
+            background-color: #56606a;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 600px) {
+            table, form, #editarAlunoDiv {
+                width: 95%;
+            }
+            th, td {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CRUD Alunos</h1>
+
+    <!-- Formulário de criação -->
+    <form id="formCriar">
+        <h3>Criar Aluno</h3>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required />
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" required />
+        <label for="ira">IRA:</label>
+        <input type="number" id="ira" step="0.1" min="0" max="10" required />
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit">Criar</button>
+        </div>
+    </form>
+
+    <!-- Tabela -->
+    <table id="tabelaAlunos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Curso</th>
+                <th>IRA</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Formulário de edição -->
+    <div id="editarAlunoDiv" style="display:none;">
+        <h3>Editar Aluno</h3>
+        <form id="formEditar">
+            <input type="hidden" id="editarId" />
+            <label for="editarNome">Nome:</label>
+            <input type="text" id="editarNome" required />
+            <label for="editarCurso">Curso:</label>
+            <input type="text" id="editarCurso" required />
+            <label for="editarIRA">IRA:</label>
+            <input type="number" id="editarIRA" step="0.1" min="0" max="10" required />
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit">Salvar</button>
+                <button type="button" id="btnCancelar">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+<script>
+    async function carregarAlunos() {
+        const res = await fetch('/api/alunos');
+        const alunos = await res.json();
+
+        const tbody = document.querySelector('#tabelaAlunos tbody');
+        tbody.innerHTML = '';
+
+        alunos.forEach(aluno => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${aluno.nome}</td>
+                <td>${aluno.curso}</td>
+                <td>${aluno.IRA}</td>
+                <td>
+                    <button onclick="mostrarEditar(${aluno.id}, '${aluno.nome}', '${aluno.curso}', ${aluno.IRA})">Editar</button>
+                    <button class="delete-btn" onclick="apagarAluno(${aluno.id})">Apagar</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    document.getElementById('formCriar').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const curso = document.getElementById('curso').value.trim();
+        const IRA = parseFloat(document.getElementById('ira').value);
+
+        if (!nome || !curso || isNaN(IRA)) {
+            alert('Por favor, preencha todos os campos corretamente.');
+            return;
+        }
+
+        const res = await fetch('/api/alunos', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({nome, curso, IRA})
+        });
+
+        if(res.ok) {
+            alert('Aluno criado!');
+            e.target.reset();
+            carregarAlunos();
+        } else {
+            alert('Erro ao criar aluno');
+        }
+    });
+
+    function mostrarEditar(id, nome, curso, ira) {
+        document.getElementById('editarAlunoDiv').style.display = 'block';
+        document.getElementById('editarId').value = id;
+        document.getElementById('editarNome').value = nome;
+        document.getElementById('editarCurso').value = curso;
+        document.getElementById('editarIRA').value = ira;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('btnCancelar').addEventListener('click', () => {
+        document.getElementById('editarAlunoDiv').style.display = 'none';
+    });
+
+    document.getElementById('formEditar').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('editarId').value;
+        const nome = document.getElementById('editarNome').value.trim();
+        const curso = document.getElementById('editarCurso').value.trim();
+        const IRA = parseFloat(document.getElementById('editarIRA').value);
+
+        if (!nome || !curso || isNaN(IRA)) {
+            alert('Por favor, preencha todos os campos corretamente.');
+            return;
+        }
+
+        const res = await fetch(`/api/alunos/${id}`, {
+            method: 'PUT',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({nome, curso, IRA})
+        });
+
+        if(res.ok) {
+            alert('Aluno atualizado!');
+            document.getElementById('editarAlunoDiv').style.display = 'none';
+            carregarAlunos();
+        } else {
+            alert('Erro ao atualizar aluno');
+        }
+    });
+
+    async function apagarAluno(id) {
+        if(confirm('Tem certeza que deseja apagar este aluno?')) {
+            const res = await fetch(`/api/alunos/${id}`, {
+                method: 'DELETE'
+            });
+            if(res.ok) {
+                alert('Aluno apagado!');
+                carregarAlunos();
+            } else {
+                alert('Erro ao apagar aluno');
+            }
+        }
+    }
+
+    carregarAlunos();
+</script>
+
+</body>
+</html>
