@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>COVID - Estados do Brasil</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    
+    tr.acima-media {
+      background-color: #ffdddd;
+    }
+    tr.maior-relacao {
+      background-color: #d4edda;
+      font-weight: bold;
+    }
+    tr.menor-relacao {
+      background-color: #cce5ff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+  <div style="margin-top: 20px;">
+    <h2>Legenda:</h2>
+    <ul>
+      <li style="background-color:#ffdddd; padding:4px;">🔴 <strong>Acima da Média de Falecimentos</strong></li>
+      <li style="background-color:#d4edda; padding:4px;">🟢 <strong>Maior relação Casos/Falecimentos</strong> (mais casos por morte)</li>
+      <li style="background-color:#cce5ff; padding:4px;">🔵 <strong>Menor relação Casos/Falecimentos</strong> (menos casos por morte)</li>
+    </ul>
+  </div>
+<body>
+  <h1>Dados COVID - Estados Brasileiros</h1>
+  <table id="tabela-estados">
+    <thead>
+      <tr>
+        <th>Nome do Estado</th>
+        <th>UF</th>
+        <th>Nº de Casos</th>
+        <th>Nº de Suspeitos</th>
+        <th>Nº de Falecimentos</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><strong>Média</strong></td>
+        <td id="media-casos"></td>
+        <td id="media-suspeitos"></td>
+        <td id="media-mortes"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    async function carregarEstados() {
+      const response = await fetch('https://covid19-brazil-api.vercel.app/api/report/v1');
+      const data = await response.json();
+      const estados = data.data;
+
+      const tbody = document.querySelector("#tabela-estados tbody");
+
+      let totalCasos = 0, totalSuspeitos = 0, totalMortes = 0;
+      let maiorRelacao = -Infinity, menorRelacao = Infinity;
+      let linhaMaior, linhaMenor;
+
+      estados.forEach(estado => {
+        totalCasos += estado.cases;
+        totalSuspeitos += estado.suspects;
+        totalMortes += estado.deaths;
+      });
+
+      const mediaCasos = totalCasos / estados.length;
+      const mediaSuspeitos = totalSuspeitos / estados.length;
+      const mediaMortes = totalMortes / estados.length;
+
+      estados.forEach(estado => {
+        const relacao = estado.deaths ? estado.cases / estado.deaths : 0;
+        const tr = document.createElement("tr");
+
+        if (estado.deaths > mediaMortes) {
+          tr.classList.add("acima-media");
+        }
+
+        tr.innerHTML = `
+          <td>${estado.state}</td>
+          <td>${estado.uf}</td>
+          <td>${estado.cases}</td>
+          <td>${estado.suspects}</td>
+          <td>${estado.deaths}</td>
+        `;
+
+        if (relacao > maiorRelacao) {
+          maiorRelacao = relacao;
+          linhaMaior = tr;
+        }
+
+        if (relacao < menorRelacao) {
+          menorRelacao = relacao;
+          linhaMenor = tr;
+        }
+
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("media-casos").textContent = mediaCasos.toFixed(2);
+      document.getElementById("media-suspeitos").textContent = mediaSuspeitos.toFixed(2);
+      document.getElementById("media-mortes").textContent = mediaMortes.toFixed(2);
+
+      linhaMaior?.classList.add("maior-relacao");
+      linhaMenor?.classList.add("menor-relacao");
+    }
+
+    carregarEstados();
+  </script>
+</body>
+</html>

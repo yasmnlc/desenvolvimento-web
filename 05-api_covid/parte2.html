@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>COVID - Países</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    tr.brasil {
+      background-color: #fff3cd;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dados COVID - Países</h1>
+  <table id="tabela-paises">
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Casos</th>
+        <th>Mortes</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function carregarPaises() {
+      const response = await fetch('https://covid19-brazil-api.vercel.app/api/report/v1/countries');
+      const data = await response.json();
+      const paises = data.data;
+
+      const tbody = document.querySelector("#tabela-paises tbody");
+
+      paises.forEach(pais => {
+        const tr = document.createElement("tr");
+
+        if (pais.country.toLowerCase() === 'brazil') {
+          tr.classList.add("brasil");
+        }
+
+        const casos = pais.cases ?? pais.confirmed ?? 'N/A';
+        const mortes = pais.deaths ?? 'N/A';
+
+        tr.innerHTML = `
+          <td>${pais.country}</td>
+          <td>${casos}</td>
+          <td>${mortes}</td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    carregarPaises();
+  </script>
+</body>
+</html>
